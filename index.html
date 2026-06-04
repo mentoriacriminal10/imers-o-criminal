@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Imersão Criminal — Dos Bastidores às Cortes</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: #0f0e0d; color: #F1EFE8; min-height: 100vh; padding: 2rem 1rem; }
+  .page { max-width: 760px; margin: 0 auto; }
+
+  .hero { border: 0.5px solid #3a3835; border-radius: 14px; padding: 2.5rem 2rem 2rem; margin-bottom: 1.5rem; }
+  .eyebrow { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #888780; margin-bottom: 1rem; font-weight: 500; }
+  .hero-title { font-family: 'Playfair Display', serif; font-size: 42px; font-weight: 900; line-height: 1.1; margin-bottom: 1rem; color: #F1EFE8; }
+  .hero-title span { font-style: italic; color: #D85A30; }
+  .hero-line { width: 40px; height: 2px; background: #D85A30; border-radius: 2px; margin-bottom: 1rem; }
+  .hero-sub { font-size: 15px; line-height: 1.7; color: #B4B2A9; max-width: 520px; }
+  .hero-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(216,90,48,0.12); border: 0.5px solid rgba(216,90,48,0.4); border-radius: 20px; padding: 5px 14px; font-size: 12px; color: #F0997B; font-weight: 500; margin-top: 1.25rem; }
+
+  .fmt-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 1.5rem; }
+  .fmt-card { background: #1a1917; border-radius: 10px; padding: 1rem; text-align: center; border: 0.5px solid #2e2c2a; }
+  .fmt-lbl { font-size: 12px; color: #888780; margin-bottom: 4px; }
+  .fmt-val { font-size: 15px; font-weight: 500; color: #F1EFE8; }
+
+  .sec-lbl { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #5F5E5A; font-weight: 500; margin-bottom: 1rem; }
+
+  .months { display: flex; flex-direction: column; gap: 12px; margin-bottom: 1.5rem; }
+  .month-card { background: #141312; border: 0.5px solid #2e2c2a; border-radius: 14px; overflow: hidden; }
+  .month-head { display: flex; align-items: center; gap: 14px; padding: 1rem 1.25rem; border-bottom: 0.5px solid #2e2c2a; }
+  .month-badge { background: rgba(216,90,48,0.15); border: 0.5px solid rgba(216,90,48,0.35); border-radius: 8px; padding: 4px 12px; font-size: 11px; font-weight: 500; color: #F0997B; white-space: nowrap; }
+  .month-title { font-size: 14px; font-weight: 500; color: #F1EFE8; line-height: 1.4; }
+  .month-body { display: grid; grid-template-columns: 1fr 1fr; }
+  .half { padding: 1rem 1.25rem; }
+  .half:first-child { border-right: 0.5px solid #2e2c2a; }
+  .half-lbl { font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: #5F5E5A; font-weight: 500; margin-bottom: 10px; }
+  .half ul { list-style: none; }
+  .half ul li { font-size: 12px; color: #888780; padding: 4px 0; display: flex; align-items: flex-start; gap: 8px; line-height: 1.5; }
+  .half ul li::before { content: '—'; color: #D85A30; font-size: 11px; flex-shrink: 0; margin-top: 1px; }
+
+  .law-strip { display: flex; flex-wrap: wrap; gap: 8px; padding: 0.75rem 1.25rem; background: #1a1917; border-top: 0.5px solid #2e2c2a; }
+  .law-pill { display: inline-flex; align-items: center; gap: 5px; background: #141312; border: 0.5px solid #3a3835; border-radius: 20px; padding: 3px 10px; font-size: 11px; color: #888780; }
+  .law-dot { width: 5px; height: 5px; border-radius: 50%; background: #D85A30; flex-shrink: 0; }
+
+  .del-box { border: 0.5px solid #2e2c2a; border-radius: 14px; padding: 1.5rem; margin-bottom: 1.5rem; background: #141312; }
+  .del-title { font-size: 15px; font-weight: 500; color: #F1EFE8; margin-bottom: 1rem; }
+  .del-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .del-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #888780; }
+  .del-dot { width: 6px; height: 6px; border-radius: 50%; background: #D85A30; flex-shrink: 0; }
+
+  .quote-block { border-left: 2px solid #D85A30; padding: 1rem 1.5rem; margin-bottom: 1.5rem; }
+  .quote-text { font-family: 'Playfair Display', serif; font-size: 17px; font-style: italic; line-height: 1.6; color: #D3D1C7; margin-bottom: 6px; }
+  .quote-attr { font-size: 12px; color: #5F5E5A; }
+
+  .cta-block { background: #1a1917; border: 0.5px solid #3a3835; border-radius: 14px; padding: 2rem; text-align: center; }
+  .cta-title { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: #F1EFE8; margin-bottom: 6px; }
+  .cta-sub { font-size: 13px; color: #888780; margin-bottom: 1.5rem; }
+  .cta-btn { display: inline-block; background: #D85A30; color: #FAECE7; border: none; border-radius: 8px; padding: 12px 32px; font-size: 15px; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; text-decoration: none; transition: background 0.15s; }
+  .cta-btn:hover { background: #993C1D; }
+
+  @media (max-width: 600px) {
+    .hero-title { font-size: 28px; }
+    .month-body { grid-template-columns: 1fr; }
+    .half:first-child { border-right: none; border-bottom: 0.5px solid #2e2c2a; }
+    .del-grid { grid-template-columns: 1fr; }
+  }
+
+  @media print {
+    body { background: #0f0e0d; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="hero">
+    <p class="eyebrow">Formação prática · Videochamada individual · Ao vivo</p>
+    <h1 class="hero-title">Imersão Criminal<br><span>Dos Bastidores às Cortes</span></h1>
+    <div class="hero-line"></div>
+    <p class="hero-sub">Domine o processo desde sede policial até as cortes superiores.</p>
+    <div class="hero-tag">&#9654;&nbsp; Eu e você. Ao vivo. Sem gravação genérica.</div>
+  </div>
+
+  <div class="fmt-row">
+    <div class="fmt-card">
+      <p class="fmt-lbl">Duração</p>
+      <p class="fmt-val">3 meses</p>
+    </div>
+    <div class="fmt-card">
+      <p class="fmt-lbl">Formato</p>
+      <p class="fmt-val">1 a 1</p>
+    </div>
+    <div class="fmt-card">
+      <p class="fmt-lbl">Modalidade</p>
+      <p class="fmt-val">Videochamada</p>
+    </div>
+  </div>
+
+  <p class="sec-lbl">Jornada mês a mês</p>
+
+  <div class="months">
+
+    <div class="month-card">
+      <div class="month-head">
+        <span class="month-badge">Mês 01</span>
+        <p class="month-title">Polícia judiciária, delegado de carreira e atuação inicial na delegacia</p>
+      </div>
+      <div class="month-body">
+        <div class="half">
+          <p class="half-lbl">Teoria</p>
+          <ul>
+            <li>Atribuições da polícia judiciária estadual — art. 144 CF</li>
+            <li>Funções do delegado: judiciária, administrativa e preventiva</li>
+            <li>Lei 12.830/2013 — natureza jurídica e exclusividade do cargo</li>
+            <li>Lei 14.735/2023 — Lei Orgânica Nacional das Polícias Civis</li>
+            <li>Indiciamento como ato privativo do delegado — STF HC 115015</li>
+            <li>Prisão em flagrante e art. 310 do CPP</li>
+            <li>Súmula 11 STF — uso de algemas e dignidade do preso</li>
+          </ul>
+        </div>
+        <div class="half">
+          <p class="half-lbl">Prática</p>
+          <ul>
+            <li>Como o advogado deve se relacionar com a autoridade policial</li>
+            <li>Entender os limites do poder do delegado para agir estrategicamente</li>
+            <li>Primeiro atendimento ao cliente ou familiar</li>
+            <li>Postura e protocolo na chegada à delegacia</li>
+            <li>Orientação sobre o direito ao silêncio</li>
+            <li>Checklist de flagrante e audiência de custódia</li>
+          </ul>
+        </div>
+      </div>
+      <div class="law-strip">
+        <span class="law-pill"><span class="law-dot"></span> Lei 12.830/2013</span>
+        <span class="law-pill"><span class="law-dot"></span> Lei 14.735/2023</span>
+        <span class="law-pill"><span class="law-dot"></span> Art. 144 CF</span>
+        <span class="law-pill"><span class="law-dot"></span> STF HC 115015</span>
+        <span class="law-pill"><span class="law-dot"></span> Súmula 11 STF</span>
+      </div>
+    </div>
+
+    <div class="month-card">
+      <div class="month-head">
+        <span class="month-badge">Mês 02</span>
+        <p class="month-title">Defesa no inquérito — acesso, provas e investigação defensiva</p>
+      </div>
+      <div class="month-body">
+        <div class="half">
+          <p class="half-lbl">Teoria</p>
+          <ul>
+            <li>Súmula Vinculante 14 e acesso aos autos</li>
+            <li>Requisição de perícia e documentos — art. 2º §2º Lei 12.830</li>
+            <li>Atos de investigação x atos de prova — art. 155 CPP</li>
+            <li>Cadeia de custódia e reconhecimento pessoal</li>
+            <li>Produção antecipada de prova</li>
+          </ul>
+        </div>
+        <div class="half">
+          <p class="half-lbl">Prática</p>
+          <ul>
+            <li>Como reagir à negativa de acesso aos autos</li>
+            <li>Pedido de diligências defensivas</li>
+            <li>Entrevista defensiva com o cliente preso</li>
+            <li>Preservação de provas e controle de ilegalidades</li>
+            <li>Abuso de autoridade — Lei 13.869/2019</li>
+          </ul>
+        </div>
+      </div>
+      <div class="law-strip">
+        <span class="law-pill"><span class="law-dot"></span> SV 14 STF</span>
+        <span class="law-pill"><span class="law-dot"></span> Art. 155 CPP</span>
+        <span class="law-pill"><span class="law-dot"></span> Lei 13.869/2019</span>
+        <span class="law-pill"><span class="law-dot"></span> Art. 7º Lei 8.906/94</span>
+      </div>
+    </div>
+
+    <div class="month-card">
+      <div class="month-head">
+        <span class="month-badge">Mês 03</span>
+        <p class="month-title">Desfecho estratégico — arquivamento, trancamento e ANPP</p>
+      </div>
+      <div class="month-body">
+        <div class="half">
+          <p class="half-lbl">Teoria</p>
+          <ul>
+            <li>Art. 28 do CPP e pedido de arquivamento</li>
+            <li>Requisitos, impedimentos e controle do ANPP</li>
+            <li>Confissão, homologação e extinção da punibilidade</li>
+            <li>Súmula 524 do STF aplicada ao caso real</li>
+          </ul>
+        </div>
+        <div class="half">
+          <p class="half-lbl">Prática</p>
+          <ul>
+            <li>Habeas corpus para trancamento do inquérito</li>
+            <li>Simulação real de negociação com o MP</li>
+            <li>Quando aceitar, renegociar ou recusar o acordo</li>
+            <li>Cláusulas perigosas e confissão controlada</li>
+          </ul>
+        </div>
+      </div>
+      <div class="law-strip">
+        <span class="law-pill"><span class="law-dot"></span> Art. 28-A CPP</span>
+        <span class="law-pill"><span class="law-dot"></span> Súmula 524 STF</span>
+        <span class="law-pill"><span class="law-dot"></span> Art. 5º LXIII CF</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="del-box">
+    <p class="del-title">O que você recebe além das aulas</p>
+    <div class="del-grid">
+      <div class="del-item"><span class="del-dot"></span>Checklist de primeiro atendimento</div>
+      <div class="del-item"><span class="del-dot"></span>Checklist completo de delegacia</div>
+      <div class="del-item"><span class="del-dot"></span>Modelos de requerimentos prontos</div>
+      <div class="del-item"><span class="del-dot"></span>Roteiro de conversa com cliente preso</div>
+      <div class="del-item"><span class="del-dot"></span>Matriz silêncio vs. declaração vs. escrito</div>
+      <div class="del-item"><span class="del-dot"></span>Matriz de decisão de ANPP</div>
+      <div class="del-item"><span class="del-dot"></span>Casos simulados mensais</div>
+      <div class="del-item"><span class="del-dot"></span>Mais de 30 requerimentos prontos para uso</div>
+      <div class="del-item"><span class="del-dot"></span>Suporte direto durante toda a formação</div>
+    </div>
+  </div>
+
+  <div class="quote-block">
+    <p class="quote-text">"A defesa criminal começa antes da denúncia. Começa na delegacia, no silêncio bem orientado, na prova preservada e na decisão estratégica de falar, calar ou negociar."</p>
+    <p class="quote-attr">Princípio central da formação</p>
+  </div>
+
+  <div class="cta-block">
+    <p class="cta-title">Você está pronto para a trincheira?</p>
+    <p class="cta-sub">Vagas limitadas. Formação individual e personalizada.</p>
+    <a href="https://wa.me/5522988084951" class="cta-btn">Quero minha vaga →</a>
+  </div>
+
+</div>
+</body>
+</html>
